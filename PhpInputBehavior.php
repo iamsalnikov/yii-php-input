@@ -15,9 +15,9 @@ class PhpInputBehavior extends CBehavior
      */
     public function events()
     {
-        return CMap::mergeArray(parent::events(), array(
-            'onBeginRequest' => 'beginRequest'
-        ));
+        Yii::app()->attachEventHandler('onBeginRequest', array($this, 'beginRequest'));
+
+        return parent::events();
     }
 
     /**
